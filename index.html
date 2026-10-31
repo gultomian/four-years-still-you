@@ -1,178 +1,65 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="theme-color" content="#f7eee8">
-  <title>Four Years, Still You ♡</title>
-  <meta name="description" content="A little love letter for four years together.">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&family=Playfair+Display:ital,wght@0,500;0,600;1,500&family=Caveat:wght@500;600&display=swap" rel="stylesheet">
-  <style>
-    :root {
-      --paper: #fbf6f1;
-      --paper-deep: #f3e7df;
-      --ink: #463631;
-      --muted: #8b7169;
-      --rose: #bd7f79;
-      --rose-dark: #965e5b;
-      --line: #ead8cf;
-      --white: #fffdfa;
-    }
-    * { box-sizing: border-box; }
-    html { scroll-behavior: smooth; }
-    body {
-      margin: 0; color: var(--ink); background: var(--paper);
-      font-family: "DM Sans", sans-serif; line-height: 1.7;
-    }
-    .grain {
-      position: fixed; inset: 0; pointer-events: none; z-index: 5; opacity: .13;
-      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.18'/%3E%3C/svg%3E");
-    }
-    .hero {
-      min-height: 100svh; display: grid; place-items: center; text-align: center;
-      padding: 70px 22px; position: relative; overflow: hidden;
-      background: radial-gradient(ellipse at 50% 40%, #fffaf6 0, var(--paper) 58%, #f2e4dc 100%);
-    }
-    .hero::before, .hero::after {
-      content: "♡"; position: absolute; color: #d9aaa1; opacity: .34;
-      font-family: Georgia, serif; font-size: clamp(100px, 20vw, 230px);
-      animation: float 7s ease-in-out infinite;
-    }
-    .hero::before { left: -35px; top: 8%; transform: rotate(-18deg); }
-    .hero::after { right: -30px; bottom: 4%; animation-delay: -3s; }
-    .hero-inner { max-width: 720px; position: relative; z-index: 1; }
-    .eyebrow {
-      text-transform: uppercase; letter-spacing: .24em; font-size: .68rem;
-      color: var(--rose-dark); font-weight: 600;
-    }
-    h1, h2 { font-family: "Playfair Display", serif; font-weight: 500; line-height: 1.15; }
-    h1 { font-size: clamp(3rem, 10vw, 6.5rem); margin: 20px 0 12px; }
-    h1 em { color: var(--rose); font-weight: 500; }
-    .subtitle { color: var(--muted); font-size: 1rem; }
-    .date-line { margin: 28px 0 34px; color: var(--muted); font-size: .82rem; letter-spacing: .1em; }
-    .button {
-      border: 0; background: var(--rose-dark); color: white; padding: 14px 25px;
-      border-radius: 999px; font: 500 .9rem "DM Sans", sans-serif; cursor: pointer;
-      box-shadow: 0 9px 24px #965e5b30; transition: transform .2s, background .2s;
-    }
-    .button:hover { transform: translateY(-2px); background: #7f4d4a; }
-    .hint { font-size: .75rem; color: #a88d84; margin-top: 14px; }
-    section { padding: 90px 22px; }
-    .wrap { width: min(680px, 100%); margin: auto; }
-    .letter-section { background: var(--white); }
-    .section-kicker { text-align: center; color: var(--rose-dark); letter-spacing: .2em; text-transform: uppercase; font-size: .68rem; font-weight: 600; }
-    h2 { font-size: clamp(2rem, 7vw, 3.2rem); text-align: center; margin: 12px 0 34px; }
-    .letter {
-      background: #fffdfa; border: 1px solid var(--line); border-radius: 5px;
-      padding: clamp(26px, 7vw, 54px); box-shadow: 0 18px 55px #694b3d0b;
-      position: relative;
-    }
-    .letter::before { content: " "; position: absolute; top: 0; left: 28px; right: 28px; height: 3px; background: #d8a49b; }
-    .letter p { margin: 0 0 19px; }
-    .letter .salute, .signature { font-family: "Caveat", cursive; font-size: 1.7rem; color: var(--rose-dark); }
-    .signature { text-align: right; margin-top: 28px; }
-    .memory-section { background: var(--paper-deep); text-align: center; }
-    .memory-card {
-      border: 1px solid #e5cfc4; background: #fffaf6; padding: 28px 24px;
-      border-radius: 6px; margin-top: 30px;
-    }
-    .big-four { font: 500 clamp(5rem, 22vw, 9rem)/1 "Playfair Display", serif; color: var(--rose); }
-    .memory-card p { max-width: 440px; margin: 12px auto 0; color: var(--muted); }
-    .promise-section { text-align: center; }
-    .promise {
-      font-family: "Playfair Display", serif; font-style: italic;
-      font-size: clamp(1.5rem, 5vw, 2.35rem); line-height: 1.45;
-      max-width: 620px; margin: 25px auto; color: var(--rose-dark);
-    }
-    footer { text-align: center; padding: 40px 20px 55px; color: var(--muted); font-size: .78rem; }
-    footer .heart { color: var(--rose); font-size: 1.2rem; }
-    .reveal { opacity: 0; transform: translateY(18px); transition: opacity .8s ease, transform .8s ease; }
-    .reveal.visible { opacity: 1; transform: none; }
-    .hidden-content { display: none; }
-    .hidden-content.show { display: block; animation: appear .9s ease both; }
-    @keyframes appear { from { opacity: 0; transform: translateY(15px); } to { opacity: 1; transform: none; } }
-    @keyframes float { 0%,100% { translate: 0 0; } 50% { translate: 0 -16px; } }
-    @media (prefers-reduced-motion: reduce) {
-      *, *::before, *::after { scroll-behavior: auto !important; animation: none !important; transition: none !important; }
-    }
-  </style>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#f6eee5">
+<title>Four years, still you ♡</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;600&family=DM+Sans:wght@400;500;600&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--paper:#f8f1e8;--ink:#463b35;--rose:#d99b9a;--muted:#88766b;--line:#e8d9ca}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;color:var(--ink);background:radial-gradient(circle at 15% 10%,#fffaf3 0,transparent 32%),var(--paper);font-family:"DM Sans",sans-serif}
+body:before{content:"";position:fixed;inset:0;pointer-events:none;opacity:.16;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.18'/%3E%3C/svg%3E")}
+.wrap{width:min(1080px,92%);margin:auto}.hero{min-height:92vh;display:grid;place-items:center;text-align:center;padding:70px 0 50px}.eyebrow{letter-spacing:.2em;text-transform:uppercase;font-size:.72rem;color:var(--muted)}h1,h2{font-family:"Playfair Display",serif;font-weight:500}h1{font-size:clamp(3rem,8vw,6.5rem);line-height:1.02;margin:18px 0}.script{font-family:"Caveat",cursive;color:#b77979;font-size:clamp(1.6rem,4vw,2.4rem)}.intro{max-width:520px;margin:20px auto;color:var(--muted);line-height:1.8}.btn{border:0;background:#795e58;color:white;border-radius:999px;padding:14px 25px;font:inherit;cursor:pointer;box-shadow:0 8px 24px #795e5825;transition:.2s}.btn:hover{transform:translateY(-2px);background:#654c47}.hero-photo{width:min(340px,76vw);margin:42px auto 0;transform:rotate(-3deg)}.polaroid{background:#fffdf9;padding:12px 12px 48px;box-shadow:0 12px 30px #604c3b20;position:relative}.polaroid img{width:100%;height:100%;object-fit:cover;display:block;filter:sepia(.08) saturate(.88)}.hero-photo img{aspect-ratio:4/3}.polaroid .scribble{position:absolute;bottom:9px;left:8px;right:8px;text-align:center;font:1.5rem "Caveat",cursive;color:#65524a}.section{padding:80px 0}.section-head{text-align:center;margin-bottom:35px}.section-head h2{font-size:clamp(2.2rem,5vw,3.5rem);margin:8px 0}.letter{max-width:720px;margin:auto;background:#fffaf4;border:1px solid var(--line);padding:clamp(25px,6vw,55px);box-shadow:0 16px 50px #715c4710;line-height:1.95;white-space:pre-line}.letter .salute{font:2rem "Caveat",cursive;color:#b77979}.gallery{display:grid;grid-template-columns:repeat(6,1fr);gap:24px;align-items:start}.memory{grid-column:span 2;transform:rotate(var(--tilt));transition:.25s}.memory:nth-child(2),.memory:nth-child(5){grid-column:span 2;margin-top:40px}.memory:nth-child(4){grid-column:2/span 2}.memory:hover{transform:rotate(0) translateY(-5px)}.memory img{aspect-ratio:4/5}.memory:nth-child(1) img,.memory:nth-child(2) img{aspect-ratio:4/3}.memory .scribble{font-size:1.35rem}.promise{text-align:center;max-width:680px;margin:auto;padding:42px 24px;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}.promise p{line-height:1.9;color:var(--muted)}footer{text-align:center;padding:50px 0 65px;color:var(--muted);font:1.5rem "Caveat",cursive}
+@media(max-width:650px){.hero{min-height:auto;padding:85px 0 45px}.section{padding:58px 0}.gallery{grid-template-columns:repeat(2,1fr);gap:18px}.memory,.memory:nth-child(2),.memory:nth-child(4),.memory:nth-child(5){grid-column:span 1;margin-top:0}.memory:nth-child(even){margin-top:28px}.memory .scribble{font-size:1.2rem}.polaroid{padding:8px 8px 40px}.letter{line-height:1.8}}
+</style>
 </head>
 <body>
-  <div class="grain"></div>
-  <header class="hero">
-    <div class="hero-inner">
-      <div class="eyebrow">A little something for you</div>
-      <h1>Four years,<br><em>still you.</em></h1>
-      <div class="subtitle">To my favorite person, and my favorite story.</div>
-      <div class="date-line">FOUR YEARS OF US · ONE HEARTFUL JOURNEY</div>
-      <button class="button" id="openLetter">Open my letter&nbsp; ♡</button>
-      <div class="hint">A small note, with a whole lot of love.</div>
+<header class="hero wrap">
+  <div>
+    <div class="eyebrow">A little something for us · 4 years</div>
+    <h1>Four years,<br><span style="color:#b77979">still you.</span></h1>
+    <div class="script">And I'd choose you all over again ♡</div>
+    <p class="intro">A little collection of moments, memories, and promises. Made with all my love.</p>
+    <button class="btn" onclick="document.querySelector('#letter').scrollIntoView({behavior:'smooth'})">Open my letter ♡</button>
+    <div class="hero-photo polaroid">
+      <img src="photos/memory-1.jpg" alt="A photo of us together">
+      <div class="scribble">my favorite person ♡</div>
     </div>
-  </header>
+  </div>
+</header>
+<main>
+<section class="section wrap" id="letter">
+  <div class="section-head"><div class="eyebrow">From my heart</div><h2>A letter for you</h2></div>
+  <article class="letter"><div class="salute">My love,</div>
+Four years. Countless memories. So many ups and downs — and through it all, it's still you and me.
 
-  <main id="theLetter" class="hidden-content">
-    <section class="letter-section">
-      <div class="wrap reveal">
-        <div class="section-kicker">For you, always</div>
-        <h2>My love,</h2>
-        <article class="letter">
-          <p class="salute">Happy 4th anniversary, love. ♡</p>
-          <p>Four years, countless memories, and our share of ups and downs. Through it all, I'm grateful that our story is still being written.</p>
-          <p>I know I've made mistakes, and I know words alone can't undo them. I'm working on myself every day—not to promise perfection, but to become a better man and to love you in the ways you deserve.</p>
-          <p>I want to keep choosing you: on the easy days, on the difficult ones, and in all the ordinary moments in between. I want to make you happy, today and for the rest of my life.</p>
-          <p>And hopefully, in two years, I'll get to celebrate this day not only as your boyfriend, but as your husband.</p>
-          <p>Thank you for being part of my life. If I had to begin this story all over again, I'd still choose you.</p>
-          <p class="signature">With all my love, always ♡</p>
-        </article>
-      </div>
-    </section>
+I know I haven't always been the partner you deserved. I've made mistakes, and I know that words alone can't undo them. I'm working on myself, learning, and becoming a better man — not just by promising it, but by showing it through the way I love you every day.
 
-    <section class="memory-section">
-      <div class="wrap reveal">
-        <div class="section-kicker">A little milestone</div>
-        <div class="big-four">04</div>
-        <h2>Years of us.</h2>
-        <div class="memory-card">
-          <div style="font-family:'Caveat',cursive;font-size:1.7rem;color:var(--rose-dark)">Not a perfect story. A real one.</div>
-          <p>Every laugh, every lesson, every little moment has become part of a story I never want to stop telling—with you.</p>
-        </div>
-      </div>
-    </section>
+I want to make you happy, to be someone you can feel safe with, laugh with, grow with, and count on. I don't expect every day to be perfect. I just hope we keep choosing each other, even on the difficult days.
 
-    <section class="promise-section">
-      <div class="wrap reveal">
-        <div class="section-kicker">A promise for tomorrow</div>
-        <h2>My favorite future<br>is one with you.</h2>
-        <p class="promise">“I can't promise that every day will be perfect. I can promise that I'll keep showing up, keep growing, and keep choosing us.”</p>
-        <p style="color:var(--muted)">Here's to more anniversaries, more adventures, and all the little tomorrows we haven't met yet.</p>
-      </div>
-    </section>
-    <footer>
-      Made with love, just for you <span class="heart">♥</span><br>
-      <span>Four years down. A lifetime to go.</span>
-    </footer>
-  </main>
+And if life allows us, in two years, I hope I'll get to celebrate this anniversary as your husband.
 
-  <script>
-    const openButton = document.getElementById("openLetter");
-    const letter = document.getElementById("theLetter");
-    openButton.addEventListener("click", () => {
-      letter.classList.add("show");
-      openButton.textContent = "Our little story ♡";
-      openButton.disabled = true;
-      setTimeout(() => letter.scrollIntoView({ behavior: "smooth" }), 120);
-    });
-    const observer = new IntersectionObserver(entries => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add("visible");
-          observer.unobserve(entry.target);
-        }
-      });
-    }, { threshold: 0.12 });
-    document.querySelectorAll(".reveal").forEach(el => observer.observe(el));
-  </script>
-</body>
-</html>
+Thank you for staying, for growing with me, and for being part of my life. Whatever comes next, I want to keep building it with you.
+
+<div class="salute">Through it all, I'd still choose you. Always. ♡</div>
+  </article>
+</section>
+<section class="section wrap">
+  <div class="section-head"><div class="eyebrow">Little pieces of us</div><h2>Our memories</h2><p class="intro">Every picture holds a moment I'd keep forever.</p></div>
+  <div class="gallery">
+    <div class="memory polaroid" style="--tilt:-2deg"><img src="photos/memory-1.jpg" alt="Us together"><div class="scribble">You, always ♡</div></div>
+    <div class="memory polaroid" style="--tilt:2deg"><img src="photos/memory-2.jpg" alt="A playful moment together"><div class="scribble">Silly days, my favorite days.</div></div>
+    <div class="memory polaroid" style="--tilt:-1deg"><img src="photos/memory-3.jpg" alt="A sunny day together"><div class="scribble">Ordinary days, made special.</div></div>
+    <div class="memory polaroid" style="--tilt:2deg"><img src="photos/memory-4.jpg" alt="A day out together"><div class="scribble">With you, everywhere feels right.</div></div>
+    <div class="memory polaroid" style="--tilt:-2deg"><img src="photos/memory-5.jpg" alt="Another favorite memory"><div class="scribble">Same team, always.</div></div>
+  </div>
+</section>
+<section class="section wrap">
+  <div class="promise"><div class="script">Here's to everything ahead</div><h2>My promise to you</h2><p>I can't promise a life without hard days. But I can promise to keep learning, keep showing up, and keep choosing us. I hope our next chapters bring more laughter, more little adventures, and one day, a lifetime together.</p><div class="script">I love you. Happy 4th Anniversary ♡</div></div>
+</section>
+</main>
+<footer>Made for you, with love. ♡</footer>
+</body></html>
